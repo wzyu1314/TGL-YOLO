@@ -34,11 +34,12 @@ datasets/
 
 ---
 
-## 🧠 Custom Modules Implementation
+## 🧠 Custom Modules Location
 
-For researchers wishing to independently verify our architectural choices, the custom modules described in the paper are implemented natively. You can locate them at:
-* **`models/common.py`**: Contains the source code for `TSDBlock`, `GPST`, and `LSPA`.
-* **`ultralytics/cfg/models/11/yolo11-tgl.yaml`**: The structural definition of the TGL-YOLO computational graph.
+The custom modules implemented in this paper can be found at the following paths:
+
+* **`ultralytics/nn/modules/block.py`**: Contains the source code for `TSDBlock`, `GPST`, and `LSPA`.
+* **`ultralytics/cfg/models/11/yolo11-tgl.yaml`**: The model configuration file for defining the architecture and training parameters of TGL-YOLO.
 
 ---
 
@@ -51,10 +52,10 @@ To ensure complete reproducibility of our empirical results, please follow the p
 To reproduce the training process on the PlantDoc dataset using the same conditions reported in our manuscript:
 
 ```bash
-python train.py --cfg ultralytics/cfg/models/11/yolo11-tgl.yaml --data datasets/PlantDoc/data.yaml --epochs 300 --batch-size 16 --imgsz 640 --device 0
+python train.py --cfg ultralytics/cfg/models/11/yolo11-tgl.yaml --data datasets/PlantDoc/data.yaml --epochs 200 --batch-size 16 --imgsz 640 --device 0
 ```
 
-*(Note: Please adjust the `--batch-size` according to your GPU memory limits. Our original experiments were conducted on a single NVIDIA RTX 3090).*
+*(Note: Please adjust the `--batch-size` according to your GPU memory limits. ).*
 
 ### 2. Validation (Verify Reported mAP)
 
@@ -66,8 +67,7 @@ python val.py --weights runs/train/exp/weights/best.pt --data datasets/PlantDoc/
 
 ### 3. Inference / Visualization
 
-To generate bounding box predictions or SS-Grad-CAM++ heatmaps on your own images:
-
+To generate bounding box predictions on your own images:
 ```bash
 python predict.py --weights runs/train/exp/weights/best.pt --source your_image_folder/ --conf 0.25
 ```
