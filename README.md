@@ -30,6 +30,7 @@ datasets/
 │   └── data.yaml
 ```
 
+(The original PlantDoc dataset can be found [here](https://github.com/pratikkayal/PlantDoc-Dataset).)
 
 ---
 
