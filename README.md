@@ -7,7 +7,7 @@ cd TGL-YOLO
 ```
 
 **2. Install dependencies:**
-We recommend using Python 3.10 and PyTorch 2.3..
+We recommend using Python 3.10 and PyTorch 2.3.0
 ```bash
 pip install -r requirements.txt
 ```
@@ -30,7 +30,6 @@ datasets/
 │   └── data.yaml
 ```
 
-*(The original PlantDoc dataset can be found [here](sslocal://flow/file_open?url=https%3A%2F%2Fgithub.com%2Fpratikkayal%2FPlantDoc-Dataset&flow_extra=eyJsaW5rX3R5cGUiOiJjb2RlX2ludGVycHJldGVyIn0=).)*
 
 ---
 
