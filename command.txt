@@ -1,0 +1,11 @@
+1 创建环境
+conda create -n ultralytics python=3.10 anaconda
+
+2 禁用SSL验证：如果问题仍然存在，您可以尝试禁用SSL验证
+conda config --set ssl_verify:false
+
+3 设置代理
+--proxy 10.40.249.234:7890
+
+4 保存日志
+python train.py > logs/yolov5.txt 2>&1

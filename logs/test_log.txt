@@ -1,0 +1,89 @@
+New https://pypi.org/project/ultralytics/8.3.168 available  Update with 'pip install -U ultralytics'
+Ultralytics 8.3.165  Python-3.10.18 torch-2.2.2+cu118 CUDA:0 (NVIDIA GeForce RTX 4060 Laptop GPU, 8188MiB)
+[34m[1mengine\trainer: [0magnostic_nms=False, amp=True, augment=False, auto_augment=randaugment, batch=16, bgr=0.0, box=7.5, cache=False, cfg=None, classes=None, close_mosaic=10, cls=0.5, conf=None, copy_paste=0.0, copy_paste_mode=flip, cos_lr=False, cutmix=0.0, data=datasets/PlantDoc/data.yaml, degrees=0.0, deterministic=True, device=None, dfl=1.5, dnn=False, dropout=0.0, dynamic=False, embed=None, epochs=1, erasing=0.4, exist_ok=False, fliplr=0.5, flipud=0.0, format=torchscript, fraction=1.0, freeze=None, half=False, hsv_h=0.015, hsv_s=0.7, hsv_v=0.4, imgsz=640, int8=False, iou=0.7, keras=False, kobj=1.0, line_width=None, lr0=0.01, lrf=0.01, mask_ratio=4, max_det=300, mixup=0.0, mode=train, model=ultralytics/cfg/models/v5/yolov5m.yaml, momentum=0.937, mosaic=1.0, multi_scale=False, name=plantdocv5m_exp3, nbs=64, nms=False, opset=None, optimize=False, optimizer=auto, overlap_mask=True, patience=100, perspective=0.0, plots=True, pose=12.0, pretrained=True, profile=False, project=runs/train, rect=False, resume=False, retina_masks=False, save=True, save_conf=False, save_crop=False, save_dir=runs\train\plantdocv5m_exp3, save_frames=False, save_json=False, save_period=-1, save_txt=False, scale=0.5, seed=0, shear=0.0, show=False, show_boxes=True, show_conf=True, show_labels=True, simplify=True, single_cls=False, source=None, split=val, stream_buffer=False, task=detect, time=None, tracker=botsort.yaml, translate=0.1, val=True, verbose=True, vid_stride=1, visualize=False, warmup_bias_lr=0.1, warmup_epochs=3.0, warmup_momentum=0.8, weight_decay=0.0005, workers=0, workspace=None
+Overriding model.yaml nc=80 with nc=30
+
+                   from  n    params  module                                       arguments                     
+  0                  -1  1      5280  ultralytics.nn.modules.conv.Conv             [3, 48, 6, 2, 2]              
+  1                  -1  1     41664  ultralytics.nn.modules.conv.Conv             [48, 96, 3, 2]                
+  2                  -1  2     65280  ultralytics.nn.modules.block.C3              [96, 96, 2]                   
+  3                  -1  1    166272  ultralytics.nn.modules.conv.Conv             [96, 192, 3, 2]               
+  4                  -1  4    444672  ultralytics.nn.modules.block.C3              [192, 192, 4]                 
+  5                  -1  1    664320  ultralytics.nn.modules.conv.Conv             [192, 384, 3, 2]              
+  6                  -1  6   2512896  ultralytics.nn.modules.block.C3              [384, 384, 6]                 
+  7                  -1  1   2655744  ultralytics.nn.modules.conv.Conv             [384, 768, 3, 2]              
+  8                  -1  2   4134912  ultralytics.nn.modules.block.C3              [768, 768, 2]                 
+  9                  -1  1   1476864  ultralytics.nn.modules.block.SPPF            [768, 768, 5]                 
+ 10                  -1  1    295680  ultralytics.nn.modules.conv.Conv             [768, 384, 1, 1]              
+ 11                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 12             [-1, 6]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 13                  -1  2   1182720  ultralytics.nn.modules.block.C3              [768, 384, 2, False]          
+ 14                  -1  1     74112  ultralytics.nn.modules.conv.Conv             [384, 192, 1, 1]              
+ 15                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 16             [-1, 4]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 17                  -1  2    296448  ultralytics.nn.modules.block.C3              [384, 192, 2, False]          
+ 18                  -1  1    332160  ultralytics.nn.modules.conv.Conv             [192, 192, 3, 2]              
+ 19            [-1, 14]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 20                  -1  2   1035264  ultralytics.nn.modules.block.C3              [384, 384, 2, False]          
+ 21                  -1  1   1327872  ultralytics.nn.modules.conv.Conv             [384, 384, 3, 2]              
+ 22            [-1, 10]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 23                  -1  2   4134912  ultralytics.nn.modules.block.C3              [768, 768, 2, False]          
+ 24        [17, 20, 23]  1   4235434  ultralytics.nn.modules.head.Detect           [30, [192, 384, 768]]         
+YOLOv5m summary: 197 layers, 25,082,506 parameters, 25,082,490 gradients
+
+Freezing layer 'model.24.dfl.conv.weight'
+[34m[1mAMP: [0mrunning Automatic Mixed Precision (AMP) checks...
+[34m[1mAMP: [0mchecks passed 
+[34m[1mtrain: [0mFast image access  (ping: 0.10.0 ms, read: 303.892.7 MB/s, size: 43.0 KB)
+[34m[1mtrain: [0mScanning C:\Users\R9000P\Desktop\ultralytics-main\datasets\PlantDoc\train\labels.cache... 2003 images, 9 backgrounds, 6 corrupt: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 2009/2009 [00:00<?, ?it/s][34m[1mtrain: [0mScanning C:\Users\R9000P\Desktop\ultralytics-main\datasets\PlantDoc\train\labels.cache... 2003 images, 9 backgrounds, 6 corrupt: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 2009/2009 [00:00<?, ?it/s]
+[34m[1mtrain: [0mC:\Users\R9000P\Desktop\ultralytics-main\datasets\PlantDoc\train\images\apple-tree-branch-blossom-plant-fruit-berry-leaf-flower-food-green-produce-evergreen-flora-sad-shrub-apples-branch-with-apples-flowering-plant-rose-family-acerola-malpighia-woody-plant-land-plant-928225_jpg.rf.6f9b9b68437853480a34b0498885b8d6.jpg: ignoring corrupt image/label: [Errno 2] No such file or directory: 'C:\\Users\\R9000P\\Desktop\\ultralytics-main\\datasets\\PlantDoc\\train\\images\\apple-tree-branch-blossom-plant-fruit-berry-leaf-flower-food-green-produce-evergreen-flora-sad-shrub-apples-branch-with-apples-flowering-plant-rose-family-acerola-malpighia-woody-plant-land-plant-928225_jpg.rf.6f9b9b68437853480a34b0498885b8d6.jpg'
+[34m[1mtrain: [0mC:\Users\R9000P\Desktop\ultralytics-main\datasets\PlantDoc\train\images\apple-tree-branch-plant-fruit-leaf-flower-food-green-produce-flora-immature-apple-tree-flowering-plant-wild-apple-tree-apple-gear-land-plant-606389_jpg.rf.c9c4c46e38909956de72db389b6a6c83.jpg: ignoring corrupt image/label: [Errno 2] No such file or directory: 'C:\\Users\\R9000P\\Desktop\\ultralytics-main\\datasets\\PlantDoc\\train\\images\\apple-tree-branch-plant-fruit-leaf-flower-food-green-produce-flora-immature-apple-tree-flowering-plant-wild-apple-tree-apple-gear-land-plant-606389_jpg.rf.c9c4c46e38909956de72db389b6a6c83.jpg'
+[34m[1mtrain: [0mC:\Users\R9000P\Desktop\ultralytics-main\datasets\PlantDoc\train\images\leaves-on-tomato-plant-turning-yellow-what-does-it-mean-when-your-plant-leaves-turn-yellow-tomato-leaf-problems-a-guide-to-leaves-tomato-plant-turning-yellow_jpg.rf.f4cd86f14c0535c093558f9b41c0681a.jpg: ignoring corrupt image/label: [Errno 2] No such file or directory: 'C:\\Users\\R9000P\\Desktop\\ultralytics-main\\datasets\\PlantDoc\\train\\images\\leaves-on-tomato-plant-turning-yellow-what-does-it-mean-when-your-plant-leaves-turn-yellow-tomato-leaf-problems-a-guide-to-leaves-tomato-plant-turning-yellow_jpg.rf.f4cd86f14c0535c093558f9b41c0681a.jpg'
+[34m[1mtrain: [0mC:\Users\R9000P\Desktop\ultralytics-main\datasets\PlantDoc\train\images\nature-plant-grape-vine-wine-fruit-food-green-produce-agriculture-grapevine-vines-shrub-grapes-winegrowing-rebstock-flowering-plant-vitis-grape-leaves-green-grapes-swiss-francs-land-plant-grapevine-family-556232_jpg.rf.fa91da522eb2cc84cd1349b542fceeff.jpg: ignoring corrupt image/label: [Errno 2] No such file or directory: 'C:\\Users\\R9000P\\Desktop\\ultralytics-main\\datasets\\PlantDoc\\train\\images\\nature-plant-grape-vine-wine-fruit-food-green-produce-agriculture-grapevine-vines-shrub-grapes-winegrowing-rebstock-flowering-plant-vitis-grape-leaves-green-grapes-swiss-francs-land-plant-grapevine-family-556232_jpg.rf.fa91da522eb2cc84cd1349b542fceeff.jpg'
+[34m[1mtrain: [0mC:\Users\R9000P\Desktop\ultralytics-main\datasets\PlantDoc\train\images\powdery-mildew-on-squash-plants-you-can-prevent-powdery-mildew-disease-by-avoiding-overhead-sprinkling-and-watering-in-the-morning-rather-than-evening-forum-news-service-file-photo-what-causes-powdery_jpg.rf.f3a6833984efbf675305b138fb1021c8.jpg: ignoring corrupt image/label: [Errno 2] No such file or directory: 'C:\\Users\\R9000P\\Desktop\\ultralytics-main\\datasets\\PlantDoc\\train\\images\\powdery-mildew-on-squash-plants-you-can-prevent-powdery-mildew-disease-by-avoiding-overhead-sprinkling-and-watering-in-the-morning-rather-than-evening-forum-news-service-file-photo-what-causes-powdery_jpg.rf.f3a6833984efbf675305b138fb1021c8.jpg'
+[34m[1mtrain: [0mC:\Users\R9000P\Desktop\ultralytics-main\datasets\PlantDoc\train\images\what-is-powdery-mildew-on-plants-mild-powdery-mildew-that-will-appear-on-most-squash-leaves-during-the-mid-summer-powdery-mildew-plant-spray-powdery-mildew-on-tomato-plant-leaves_jpg.rf.4f9c9197021a03a5a8c0444ed7240f4a.jpg: ignoring corrupt image/label: [Errno 2] No such file or directory: 'C:\\Users\\R9000P\\Desktop\\ultralytics-main\\datasets\\PlantDoc\\train\\images\\what-is-powdery-mildew-on-plants-mild-powdery-mildew-that-will-appear-on-most-squash-leaves-during-the-mid-summer-powdery-mildew-plant-spray-powdery-mildew-on-tomato-plant-leaves_jpg.rf.4f9c9197021a03a5a8c0444ed7240f4a.jpg'
+[34m[1mval: [0mFast image access  (ping: 0.10.0 ms, read: 1260.81377.7 MB/s, size: 259.3 KB)
+[34m[1mval: [0mScanning C:\Users\R9000P\Desktop\ultralytics-main\datasets\PlantDoc\valid\labels.cache... 312 images, 1 backgrounds, 2 corrupt: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 314/314 [00:00<?, ?it/s][34m[1mval: [0mScanning C:\Users\R9000P\Desktop\ultralytics-main\datasets\PlantDoc\valid\labels.cache... 312 images, 1 backgrounds, 2 corrupt: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 314/314 [00:00<?, ?it/s]
+[34m[1mval: [0mC:\Users\R9000P\Desktop\ultralytics-main\datasets\PlantDoc\valid\images\strawberry-plant-leaves-the-distorted-wrinkled-leaves-are-showing-signs-of-cold-damage-the-older-and-younger-leaves-around-them-are-normal-looking-strawberry-plant-leaves-turn-red_jpg.rf.b83d3bb1a598149554ef758d6aec9d66.jpg: ignoring corrupt image/label: [Errno 2] No such file or directory: 'C:\\Users\\R9000P\\Desktop\\ultralytics-main\\datasets\\PlantDoc\\valid\\images\\strawberry-plant-leaves-the-distorted-wrinkled-leaves-are-showing-signs-of-cold-damage-the-older-and-younger-leaves-around-them-are-normal-looking-strawberry-plant-leaves-turn-red_jpg.rf.b83d3bb1a598149554ef758d6aec9d66.jpg'
+[34m[1mval: [0mC:\Users\R9000P\Desktop\ultralytics-main\datasets\PlantDoc\valid\images\tree-branch-blossom-plant-fruit-berry-leaf-flower-ripe-food-red-produce-botany-flora-leaves-shrub-fruits-bing-cherry-cherries-flowering-plant-rose-family-fruity-cherry-harvest-sweet-cherry-land-plant-913933_jpg.rf.50a913a836b4208c53aebe2325fa723c.jpg: ignoring corrupt image/label: [Errno 2] No such file or directory: 'C:\\Users\\R9000P\\Desktop\\ultralytics-main\\datasets\\PlantDoc\\valid\\images\\tree-branch-blossom-plant-fruit-berry-leaf-flower-ripe-food-red-produce-botany-flora-leaves-shrub-fruits-bing-cherry-cherries-flowering-plant-rose-family-fruity-cherry-harvest-sweet-cherry-land-plant-913933_jpg.rf.50a913a836b4208c53aebe2325fa723c.jpg'
+Plotting labels to runs\train\plantdocv5m_exp3\labels.jpg... 
+[34m[1moptimizer:[0m 'optimizer=auto' found, ignoring 'lr0=0.01' and 'momentum=0.937' and determining best 'optimizer', 'lr0' and 'momentum' automatically... 
+[34m[1moptimizer:[0m AdamW(lr=0.000294, momentum=0.9) with parameter groups 91 weight(decay=0.0), 98 weight(decay=0.0005), 97 bias(decay=0.0)
+Image sizes 640 train, 640 val
+Using 0 dataloader workers
+Logging results to [1mruns\train\plantdocv5m_exp3[0m
+Starting training for 1 epochs...
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+  0%|          | 0/126 [00:00<?, ?it/s]        1/1      5.86G      3.275      5.366       4.21        131        640:   0%|          | 0/126 [00:00<?, ?it/s]        1/1      5.86G      3.275      5.366       4.21        131        640:   1%|          | 1/126 [00:00<01:50,  1.14it/s]        1/1      5.86G      3.393      5.303      4.216         92        640:   1%|          | 1/126 [00:01<01:50,  1.14it/s]        1/1      5.86G      3.393      5.303      4.216         92        640:   2%|¨‡         | 2/126 [00:01<01:28,  1.40it/s]        1/1      5.86G      3.445      5.274      4.205        122        640:   2%|¨‡         | 2/126 [00:02<01:28,  1.40it/s]        1/1      5.86G      3.445      5.274      4.205        122        640:   2%|¨‡         | 3/126 [00:02<01:18,  1.56it/s]        1/1      5.86G      3.364      5.255      4.206         93        640:   2%|¨‡         | 3/126 [00:02<01:18,  1.56it/s]        1/1      5.86G      3.364      5.255      4.206         93        640:   3%|¨†         | 4/126 [00:02<01:16,  1.59it/s]        1/1      5.86G       3.31      5.264      4.198         99        640:   3%|¨†         | 4/126 [00:03<01:16,  1.59it/s]        1/1      5.86G       3.31      5.264      4.198         99        640:   4%|¨…         | 5/126 [00:03<01:13,  1.64it/s]        1/1      5.88G      3.304      5.252      4.195         75        640:   4%|¨…         | 5/126 [00:03<01:13,  1.64it/s]        1/1      5.88G      3.304      5.252      4.195         75        640:   5%|¨…         | 6/126 [00:03<01:16,  1.57it/s]        1/1      5.88G      3.298       5.26      4.197        100        640:   5%|¨…         | 6/126 [00:04<01:16,  1.57it/s]        1/1      5.88G      3.298       5.26      4.197        100        640:   6%|¨„         | 7/126 [00:04<01:18,  1.51it/s]        1/1      5.88G      3.284      5.248      4.197        108        640:   6%|¨„         | 7/126 [00:05<01:18,  1.51it/s]        1/1      5.88G      3.284      5.248      4.197        108        640:   6%|¨ƒ         | 8/126 [00:05<01:18,  1.50it/s]        1/1      5.88G      3.259      5.251      4.193         73        640:   6%|¨ƒ         | 8/126 [00:05<01:18,  1.50it/s]        1/1      5.88G      3.259      5.251      4.193         73        640:   7%|¨ƒ         | 9/126 [00:05<01:17,  1.52it/s]        1/1      5.88G      3.276      5.247      4.195         95        640:   7%|¨ƒ         | 9/126 [00:06<01:17,  1.52it/s]        1/1      5.88G      3.276      5.247      4.195         95        640:   8%|¨‚         | 10/126 [00:06<01:17,  1.50it/s]        1/1      5.88G      3.262      5.243      4.193         94        640:   8%|¨‚         | 10/126 [00:07<01:17,  1.50it/s]        1/1      5.88G      3.262      5.243      4.193         94        640:   9%|¨‚         | 11/126 [00:07<01:13,  1.56it/s]        1/1      5.88G      3.283      5.246      4.192         93        640:   9%|¨‚         | 11/126 [00:07<01:13,  1.56it/s]        1/1      5.88G      3.283      5.246      4.192         93        640:  10%|¨         | 12/126 [00:07<01:09,  1.63it/s]        1/1      5.88G      3.283      5.246      4.192         93        640:  10%|¨         | 12/126 [00:07<01:15,  1.51it/s]
+Traceback (most recent call last):
+  File "C:\Users\R9000P\Desktop\ultralytics-main\train.py", line 9, in <module>
+    model.train(
+  File "C:\Users\R9000P\Desktop\ultralytics-main\ultralytics\engine\model.py", line 799, in train
+    self.trainer.train()
+  File "C:\Users\R9000P\Desktop\ultralytics-main\ultralytics\engine\trainer.py", line 227, in train
+    self._do_train(world_size)
+  File "C:\Users\R9000P\Desktop\ultralytics-main\ultralytics\engine\trainer.py", line 388, in _do_train
+    for i, batch in pbar:
+  File "C:\Users\R9000P\anaconda3\envs\ultralytics\lib\site-packages\tqdm\std.py", line 1181, in __iter__
+    for obj in iterable:
+  File "C:\Users\R9000P\Desktop\ultralytics-main\ultralytics\data\build.py", line 68, in __iter__
+    yield next(self.iterator)
+  File "C:\Users\R9000P\anaconda3\envs\ultralytics\lib\site-packages\torch\utils\data\dataloader.py", line 631, in __next__
+    data = self._next_data()
+  File "C:\Users\R9000P\anaconda3\envs\ultralytics\lib\site-packages\torch\utils\data\dataloader.py", line 675, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "C:\Users\R9000P\anaconda3\envs\ultralytics\lib\site-packages\torch\utils\data\_utils\fetch.py", line 51, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "C:\Users\R9000P\anaconda3\envs\ultralytics\lib\site-packages\torch\utils\data\_utils\fetch.py", line 51, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "C:\Users\R9000P\Desktop\ultralytics-main\ultralytics\data\base.py", line 379, in __getitem__
+    return self.transforms(self.get_image_and_label(index))
+  File "C:\Users\R9000P\Desktop\ultralytics-main\ultralytics\data\base.py", line 393, in get_image_and_label
+    label["img"], label["ori_shape"], label["resized_shape"] = self.load_image(index)
+  File "C:\Users\R9000P\Desktop\ultralytics-main\ultralytics\data\base.py", line 236, in load_image
+    im = imread(f, flags=self.cv2_flag)  # BGR
+  File "C:\Users\R9000P\Desktop\ultralytics-main\ultralytics\utils\patches.py", line 41, in imread
+    im = cv2.imdecode(file_bytes, flags)
+KeyboardInterrupt
+^C

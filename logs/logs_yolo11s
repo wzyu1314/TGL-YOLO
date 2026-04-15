@@ -1,0 +1,37 @@
+# yolo11s在plantdoc数据集上logs
+
+200 epochs completed in 6.464 hours.
+Optimizer stripped from runs\train\plantdoc_exp8\weights\last.pt, 19.2MB
+Optimizer stripped from runs\train\plantdoc_exp8\weights\best.pt, 19.2MB
+
+Validating runs\train\plantdoc_exp8\weights\best.pt...
+Ultralytics 8.3.165  Python-3.10.18 torch-2.2.2+cu118 CUDA:0 (NVIDIA GeForce RTX 4060 Laptop GPU, 8188MiB)
+YOLO11s summary (fused): 100 layers, 9,424,410 parameters, 0 gradients
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100%|██████████| 10/10 [00:10<00:00,  1.00s/it]
+                   all        312       1184      0.525      0.561      0.581      0.396
+       Apple Scab Leaf          1          2          0          0     0.0415      0.035
+            Apple leaf         24         61      0.695      0.708      0.802      0.551
+       Apple rust leaf          4          4      0.708        0.5      0.681      0.344
+      Bell_pepper leaf          4         11      0.867      0.593       0.75      0.418
+ Bell_pepper leaf spot          1          1      0.299          1      0.332      0.332
+        Blueberry leaf          7         41      0.394      0.854      0.698      0.511
+           Cherry leaf          1          2      0.456          1      0.828      0.629
+      Corn leaf blight         10         12      0.391      0.482      0.565      0.398
+        Corn rust leaf         14         16          1      0.751      0.963      0.676
+            Peach leaf         25        130      0.869      0.666      0.835      0.568
+        Raspberry leaf          3         14      0.197      0.929      0.644       0.43
+         Soyabean leaf         22        118      0.805      0.322      0.635      0.471
+Squash Powdery mildew leaf          7          9      0.484      0.778      0.768      0.589
+       Strawberry leaf         28        141      0.878      0.929      0.962      0.716
+Tomato Early blight leaf         11         30      0.234      0.167      0.148     0.0756
+Tomato Septoria leaf spot         46        128      0.586      0.464      0.532      0.331
+           Tomato leaf         16         87      0.569      0.678      0.711       0.33
+Tomato leaf bacterial spot          6         16          0          0     0.0283     0.0178
+Tomato leaf late blight         22         52      0.648      0.442       0.56      0.359
+Tomato leaf mosaic virus         19        108       0.76      0.147      0.429      0.259
+Tomato leaf yellow virus         18        138       0.33      0.319      0.225      0.106
+      Tomato mold leaf         20         60      0.451      0.164      0.239       0.15
+            grape leaf          2          3       0.46          1      0.995      0.808
+Speed: 0.2ms preprocess, 3.6ms inference, 0.0ms loss, 1.7ms postprocess per image
+Results saved to runs\train\plantdoc_exp8
+
