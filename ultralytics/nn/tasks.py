@@ -19,6 +19,8 @@ from ultralytics.nn.modules import (
     C3,
     C3TR,
     ELAN1,
+    GPST,  # TGL-YOLO Component
+    LSPA,  # TGL-YOLO Component
     OBB,
     PSA,
     SPP,
@@ -64,13 +66,11 @@ from ultralytics.nn.modules import (
     SCDown,
     Segment,
     TorchVision,
+    TSDBlock,  # TGL-YOLO Component
     WorldDetect,
     YOLOEDetect,
     YOLOESegment,
     v10Detect,
-    LSPA,      # TGL-YOLO Component
-    GPST,      # TGL-YOLO Component
-    TSDBlock,  # TGL-YOLO Component
 )
 from ultralytics.utils import DEFAULT_CFG_DICT, DEFAULT_CFG_KEYS, LOGGER, YAML, colorstr, emojis
 from ultralytics.utils.checks import check_requirements, check_suffix, check_yaml
@@ -96,12 +96,12 @@ from ultralytics.utils.torch_utils import (
     time_sync,
 )
 
-class BaseModel(torch.nn.Module):
-    """
-    Base class for all YOLO models in the Ultralytics family.
 
-    This class provides common functionality for YOLO models including forward pass handling, model fusion,
-    information display, and weight loading capabilities.
+class BaseModel(torch.nn.Module):
+    """Base class for all YOLO models in the Ultralytics family.
+
+    This class provides common functionality for YOLO models including forward pass handling, model fusion, information
+    display, and weight loading capabilities.
 
     Attributes:
         model (torch.nn.Module): The neural network model.
@@ -407,6 +407,7 @@ class RTDETRDetectionModel(DetectionModel):
 
     def init_criterion(self):
         from ultralytics.models.utils.loss import RTDETRDetectionLoss
+
         return RTDETRDetectionLoss(nc=self.nc, use_vfl=True)
 
     def loss(self, batch, preds=None):
@@ -877,7 +878,7 @@ def parse_model(d, ch, verbose=True):
     if scales:
         scale = d.get("scale")
         if not scale:
-            scale = tuple(scales.keys())[0]
+            scale = next(iter(scales.keys()))
             LOGGER.warning(f"no model scale passed. Assuming scale='{scale}'.")
         depth, width, max_channels = scales[scale]
 
@@ -927,8 +928,8 @@ def parse_model(d, ch, verbose=True):
             SCDown,
             C2fCIB,
             A2C2f,
-            LSPA,       # TGL-YOLO Component
-            TSDBlock,   # TGL-YOLO Component (Notice GPST is removed from here for specific parsing)
+            LSPA,  # TGL-YOLO Component
+            TSDBlock,  # TGL-YOLO Component (Notice GPST is removed from here for specific parsing)
         }
     )
     repeat_modules = frozenset(  # modules with 'repeat' arguments
@@ -948,7 +949,7 @@ def parse_model(d, ch, verbose=True):
             C2fCIB,
             C2PSA,
             A2C2f,
-            TSDBlock,   # TGL-YOLO Component
+            TSDBlock,  # TGL-YOLO Component
         }
     )
     for i, (f, n, m, args) in enumerate(d["backbone"] + d["head"]):  # from, number, module, args
@@ -1038,7 +1039,7 @@ def parse_model(d, ch, verbose=True):
         m_.np = sum(x.numel() for x in m_.parameters())  # number params
         m_.i, m_.f, m_.type = i, f, t  # attach index, 'from' index, type
         if verbose:
-            LOGGER.info(f"{i:>3}{str(f):>20}{n_:>3}{m_.np:10.0f}  {t:<45}{str(args):<30}")  # print
+            LOGGER.info(f"{i:>3}{f!s:>20}{n_:>3}{m_.np:10.0f}  {t:<45}{args!s:<30}")  # print
         save.extend(x % i for x in ([f] if isinstance(f, int) else f) if x != -1)  # append to savelist
         layers.append(m_)
         if i == 0:
@@ -1064,7 +1065,7 @@ def yaml_model_load(path):
 
 def guess_model_scale(model_path):
     try:
-        return re.search(r"yolo(e-)?[v]?\d+([nslmx])", Path(model_path).stem).group(2)  # noqa
+        return re.search(r"yolo(e-)?[v]?\d+([nslmx])", Path(model_path).stem).group(2)
     except AttributeError:
         return ""
 
